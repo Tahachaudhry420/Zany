@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zany'sCollection — Luxury Jewelry, Pakistani Suits & Handbags</title>
+<meta name="description" content="Zany'sCollection — premium jewelry, hand-finished Pakistani suits, and women's handbags. Bold, festive, unapologetically luxurious.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald:#0B3D2E;
+    --emerald-deep:#082B20;
+    --emerald-light:#1D5C46;
+    --magenta:#C2185B;
+    --magenta-deep:#9A1149;
+    --gold:#D4AF37;
+    --gold-deep:#B8912A;
+    --cream:#FBF6EA;
+    --ink:#20180F;
+    --ink-soft:#5c5548;
+    --line:#EAE0C8;
+    --display:'Playfair Display', serif;
+    --body:'Poppins', sans-serif;
+    --max:1280px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:var(--body); color:var(--ink); background:var(--cream); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer; border:none; background:none;}
+  :focus-visible{ outline:2px solid var(--magenta); outline-offset:3px; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 40px; }
+  .eyebrow{ font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); font-weight:700; }
+  h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.1; }
+  .btn{ display:inline-flex; align-items:center; gap:10px; padding:16px 36px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; border-radius:40px; transition:all .3s ease; }
+  .btn-gold{ background:var(--gold); color:var(--emerald-deep); }
+  .btn-gold:hover{ background:var(--gold-deep); transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(212,175,55,.6); }
+  .btn-outline{ border:2px solid var(--cream); color:var(--cream); }
+  .btn-outline:hover{ background:var(--cream); color:var(--emerald-deep); }
+  .btn-dark{ background:var(--emerald); color:#fff; }
+  .btn-dark:hover{ background:var(--magenta); transform:translateY(-2px); }
+
+  /* ---------- Header ---------- */
+  header{ position:sticky; top:0; z-index:100; background:rgba(251,246,234,.9); backdrop-filter:blur(14px); border-bottom:1px solid transparent; box-shadow:0 0 0 rgba(32,24,15,0); transition:border-color .4s ease, box-shadow .4s ease; }
+  header.scrolled{ border-color:var(--line); box-shadow:0 8px 24px -16px rgba(32,24,15,.35); }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; height:88px; transition:height .35s cubic-bezier(.4,0,.2,1); }
+  header.scrolled .nav-row{ height:70px; }
+  .logo{ display:flex; align-items:center; gap:10px; }
+  .logo-mark{ width:46px; height:auto; display:block; transition:transform .5s cubic-bezier(.34,1.56,.64,1); transform-origin:center; }
+  header.scrolled .logo-mark{ width:38px; }
+  .logo:hover .logo-mark{ transform:scale(1.08); }
+  .logo-text{
+    font-family:var(--display); font-size:19px; font-weight:800;
+    text-transform:uppercase; letter-spacing:.1em;
+    background:linear-gradient(100deg, #9B5F5F 15%, #F3D9C4 42%, #C9967C 58%, #9B5F5F 85%);
+    background-size:280% 100%; background-position:100% 0;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shimmerIn 2.2s ease .4s 1 both;
+    transition:font-size .35s ease;
+  }
+  header.scrolled .logo-text{ font-size:16.5px; }
+  @keyframes shimmerIn{ 0%{ background-position:180% 0; } 100%{ background-position:-20% 0; } }
+  .logo-text span{ -webkit-background-clip:text; background-clip:text; color:transparent; }
+  nav.primary ul{ display:flex; gap:40px; }
+  nav.primary a{ font-size:12.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:600; position:relative; padding-bottom:4px; }
+  nav.primary a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--magenta); border-radius:2px; transition:width .3s ease; }
+  nav.primary a:hover::after{ width:100%; }
+  .icons-row{ display:flex; align-items:center; gap:22px; }
+  .menu-toggle{ display:none; width:38px; height:38px; align-items:center; justify-content:center; }
+  .menu-toggle svg{ width:22px; height:22px; stroke:var(--emerald); }
+  .mobile-nav{ display:none; position:absolute; top:100%; left:0; right:0; background:var(--cream); border-bottom:1px solid var(--line); box-shadow:0 16px 28px -14px rgba(0,0,0,.22); z-index:99; }
+  .mobile-nav.open{ display:block; }
+  .mobile-nav ul{ display:flex; flex-direction:column; padding:6px 24px 18px; }
+  .mobile-nav li{ border-bottom:1px solid var(--line); }
+  .mobile-nav li:last-child{ border-bottom:none; }
+  .mobile-nav a{ display:block; padding:15px 2px; font-size:13.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:600; color:var(--ink); }
+  .mobile-nav a:hover{ color:var(--magenta-deep); }
+  .icons-row button{ transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+  .icons-row button:hover{ transform:translateY(-2px) scale(1.12); }
+  .icons-row svg{ width:19px; height:19px; stroke:var(--emerald); transition:stroke .2s; }
+  .icons-row button:hover svg{ stroke:var(--magenta); }
+  .cart-dot{ position:relative; }
+  .cart-dot::after{ content:attr(data-count); position:absolute; top:-7px; right:-8px; background:var(--magenta); color:#fff; font-size:9px; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; }
+  .cart-dot:not([data-count]), .cart-dot[data-count="0"]{ }
+  .cart-dot:not([data-count])::after, .cart-dot[data-count="0"]::after{ display:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{ position:relative; padding:90px 0 110px; overflow:hidden; background:var(--emerald); color:var(--cream); }
+  .hero::before{ content:''; position:absolute; inset:0; background:
+      radial-gradient(circle at 12% 25%, rgba(212,175,55,.28), transparent 42%),
+      radial-gradient(circle at 88% 78%, rgba(194,24,91,.32), transparent 45%); }
+  .hero-inner{ position:relative; z-index:2; text-align:center; max-width:760px; margin:0 auto; }
+  .hero .eyebrow{ color:var(--gold); }
+  .hero h1{ font-size:clamp(46px,7vw,78px); margin:20px 0 24px; }
+  .hero h1 em{ font-style:italic; color:var(--magenta); font-weight:600; -webkit-text-stroke:.5px var(--gold); }
+  .hero p{ font-size:16px; color:#d9d2bd; max-width:480px; margin:0 auto 38px; line-height:1.75; }
+  .hero-ctas{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .scroll-cue{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:#c9c2a9; animation:bob 2.4s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,8px);} }
+
+  section{ padding:96px 0; }
+  .section-head{ text-align:center; max-width:560px; margin:0 auto 56px; }
+  .section-head h2{ font-size:clamp(32px,4vw,46px); margin-top:12px; }
+  .section-head p{ color:var(--ink-soft); margin-top:14px; font-size:15px; line-height:1.7; }
+
+  /* ---------- Categories ---------- */
+  .cat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .cat-card{ position:relative; height:440px; border-radius:20px; overflow:hidden; display:flex; align-items:flex-end; padding:34px; isolation:isolate; transition:transform .5s cubic-bezier(.16,1,.3,1); }
+  .cat-card:hover{ transform:translateY(-8px) scale(1.01); }
+  .cat-card.jewelry{ background:linear-gradient(155deg,#0B3D2E,#1D5C46); }
+  .cat-card.suits{ background:linear-gradient(155deg,#9A1149,#C2185B); }
+  .cat-card.bags{ background:linear-gradient(155deg,#7a5c14,#D4AF37); }
+  .cat-card::after{ content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 15%, rgba(255,255,255,.18), transparent 50%); }
+  .cat-card .cat-icon{ position:absolute; top:30px; left:30px; width:42px; height:42px; stroke:#fff; opacity:.85; }
+  .cat-card-body{ position:relative; z-index:2; color:#fff; }
+  .cat-card-body .eyebrow{ color:#fff; opacity:.75; }
+  .cat-card-body h3{ font-size:30px; margin:8px 0 12px; }
+  .cat-card-body a{ display:inline-block; font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; background:rgba(255,255,255,.16); padding:9px 18px; border-radius:30px; }
+  .cat-card-body a:hover{ background:#fff; color:var(--emerald-deep); }
+
+  /* ---------- Product grid ---------- */
+  .prod-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .prod-card{ background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 18px -8px rgba(32,24,15,.12); transition:box-shadow .4s ease, transform .4s ease; }
+  .prod-card:hover{ box-shadow:0 26px 44px -16px rgba(32,24,15,.22); transform:translateY(-5px); }
+  .prod-media{ position:relative; aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .prod-media.jewelry{ background:linear-gradient(150deg,#0B3D2E,#1D5C46); }
+  .prod-media.suits{ background:linear-gradient(150deg,#9A1149,#C2185B); }
+  .prod-media.bags{ background:linear-gradient(150deg,#7a5c14,#D4AF37); }
+  .prod-media svg{ width:52px; height:52px; stroke:#fff; opacity:.85; }
+  .badge{ position:absolute; top:14px; left:14px; z-index:2; background:var(--gold); color:var(--emerald-deep); font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:5px 11px; border-radius:20px; font-weight:800; }
+  .wish-btn{ position:absolute; top:12px; right:12px; z-index:2; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(-6px); transition:all .3s ease; }
+  .prod-card:hover .wish-btn{ opacity:1; transform:translateY(0); }
+  .wish-btn svg{ width:16px; height:16px; stroke:var(--emerald); }
+  .quick-add{ position:absolute; left:12px; right:12px; bottom:12px; z-index:2; background:var(--emerald); color:#fff; text-align:center; padding:11px; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; border-radius:30px; opacity:0; transform:translateY(10px); transition:all .3s ease; }
+  .prod-card:hover .quick-add{ opacity:1; transform:translateY(0); background:var(--magenta); }
+  .media-link{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+  .prod-info{ padding:18px 18px 22px; }
+  .prod-info .eyebrow{ font-size:10.5px; }
+  .prod-info h4{ font-family:var(--display); font-size:18px; font-weight:700; margin:6px 0 8px; }
+  .prod-info h4 a{ color:inherit; transition:color .2s; }
+  .prod-info h4 a:hover{ color:var(--magenta-deep); }
+  .stars{ display:flex; gap:2px; margin-bottom:8px; }
+  .stars svg{ width:12px; height:12px; fill:var(--gold); stroke:none; }
+  .price-row{ display:flex; align-items:baseline; gap:8px; }
+  .price{ font-weight:800; font-size:15px; color:var(--magenta-deep); }
+  .price-was{ font-size:12.5px; color:#a8a196; text-decoration:line-through; }
+  .grid-cta{ text-align:center; margin-top:52px; }
+
+  /* ---------- Brand story ---------- */
+  .story{ background:#fff; }
+  .story .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+  .story-art{ position:relative; aspect-ratio:1/1.1; border-radius:24px; overflow:hidden; background:linear-gradient(160deg,#0B3D2E 0%,#9A1149 55%,#D4AF37 100%); }
+  .story-copy .eyebrow{ margin-bottom:14px; color:var(--magenta-deep); }
+  .story-copy h2{ font-size:clamp(30px,3.6vw,42px); margin-bottom:22px; }
+  .story-copy p{ color:var(--ink-soft); line-height:1.85; margin-bottom:18px; font-size:15.5px; }
+  .story-stats{ display:flex; gap:44px; margin-top:36px; }
+  .story-stats div strong{ font-family:var(--display); font-size:34px; display:block; color:var(--magenta-deep); }
+  .story-stats div span{ font-size:12px; letter-spacing:.06em; color:var(--ink-soft); }
+
+  /* ---------- Trust band ---------- */
+  .trust{ background:var(--emerald-deep); color:#fff; padding:60px 0; }
+  .trust .wrap{ display:grid; grid-template-columns:repeat(4,1fr); gap:30px; }
+  .trust-item{ display:flex; align-items:flex-start; gap:16px; }
+  .trust-item svg{ width:28px; height:28px; stroke:var(--gold); flex-shrink:0; }
+  .trust-item h5{ font-family:var(--display); font-size:17px; font-weight:700; margin-bottom:4px; }
+  .trust-item p{ font-size:12.5px; color:#c7c0aa; line-height:1.6; }
+
+  /* ---------- Testimonials ---------- */
+  .testi-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:26px; }
+  .testi-grid .testi-card{ flex:1 1 340px; max-width:420px; }
+  .testi-card{ background:#fff; border-radius:16px; padding:32px; box-shadow:0 4px 18px -8px rgba(32,24,15,.1); border-top:4px solid var(--gold); }
+
+  /* ---------- Testimonials: floating 3D ambience ---------- */
+  .testi-section{ position:relative; padding:96px 0; overflow:hidden; }
+  .testi-orbs{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+  .orb{ position:absolute; border-radius:50%; filter:blur(40px); opacity:.6; will-change:transform; }
+  .orb-emerald{ width:420px; height:420px; left:-100px; top:5%; background:radial-gradient(circle, var(--emerald-light) 0%, var(--emerald) 55%, transparent 75%); animation:orbFloat1 7s ease-in-out infinite; }
+  .orb-magenta{ width:380px; height:380px; right:-80px; top:30%; background:radial-gradient(circle, #ff5c9d 0%, var(--magenta) 55%, transparent 75%); animation:orbFloat2 8.5s ease-in-out infinite; }
+  .orb-gold{ width:320px; height:320px; left:35%; bottom:-140px; background:radial-gradient(circle, #ffe6a0 0%, var(--gold) 55%, transparent 75%); animation:orbFloat3 6s ease-in-out infinite; }
+  @keyframes orbFloat1{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(130px,-90px) scale(1.25); } }
+  @keyframes orbFloat2{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-120px,100px) scale(1.2); } }
+  @keyframes orbFloat3{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(80px,-130px) scale(1.3); } }
+  .testi-section .wrap{ position:relative; z-index:2; }
+  .testi-section .testi-card{
+    animation:testiFloat 3s ease-in-out infinite;
+    transform-style:preserve-3d; perspective:800px;
+    transition:box-shadow .3s ease;
+  }
+  .testi-section .testi-card:nth-child(2){ animation-delay:.4s; }
+  .testi-section .testi-card:nth-child(3){ animation-delay:.8s; }
+  .testi-section .testi-card:hover{ box-shadow:0 26px 44px -16px rgba(32,24,15,.28); }
+  @keyframes testiFloat{ 0%,100%{ transform:translateY(0) rotateX(0) rotateY(0); } 50%{ transform:translateY(-22px) rotateX(2deg) rotateY(-2deg); } }
+  @media (prefers-reduced-motion: reduce){
+    .orb{ animation:none !important; }
+    .testi-section .testi-card{ animation:none !important; }
+  }
+  @media (max-width:640px){
+    .orb{ width:220px !important; height:220px !important; }
+  }
+  .testi-card .stars{ margin-bottom:16px; }
+  .testi-card .stars svg{ width:13px; height:13px; }
+  .testi-card p{ font-size:14.5px; line-height:1.8; color:var(--ink-soft); margin-bottom:22px; font-style:italic; }
+  .testi-who{ display:flex; align-items:center; gap:12px; }
+  .avatar{ width:38px; height:38px; border-radius:50%; background:linear-gradient(150deg,var(--gold),var(--magenta)); }
+  .testi-who strong{ font-size:13.5px; display:block; }
+  .testi-who span{ font-size:11.5px; color:var(--ink-soft); }
+
+  /* ---------- Footer ---------- */
+  footer{ background:#150F0A; color:#c7c0aa; padding:76px 0 30px; }
+  .foot-grid{ display:grid; grid-template-columns:1.6fr repeat(3,1fr); gap:40px; margin-bottom:56px; }
+  .foot-brand .logo-text{ color:#fff; }
+  .foot-brand p{ font-size:13.5px; line-height:1.8; margin:18px 0 22px; max-width:280px; color:#96907e; }
+  .social-row{ display:flex; gap:12px; }
+  .social-row a{ width:36px; height:36px; border:1px solid #3a352a; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:all .3s; }
+  .social-row a:hover{ border-color:var(--gold); background:var(--gold); }
+  .social-row svg{ width:15px; height:15px; stroke:#c7c0aa; }
+  .social-row a:hover svg{ stroke:#150F0A; }
+  .foot-col h6{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#fff; margin-bottom:18px; font-weight:700; }
+  .foot-col ul li{ margin-bottom:11px; }
+  .foot-col a{ font-size:13.5px; color:#96907e; transition:color .2s; }
+  .foot-col a:hover{ color:var(--gold); }
+  .foot-bottom{ border-top:1px solid #2c271e; padding-top:26px; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#75705f; flex-wrap:wrap; gap:14px; }
+
+  .wa-float{ position:fixed; bottom:26px; right:26px; width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; z-index:200; box-shadow:0 12px 26px -8px rgba(37,211,102,.6); transition:transform .3s; }
+  .wa-float:hover{ transform:scale(1.08); }
+  .wa-float svg{ width:26px; height:26px; fill:#fff; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } .scroll-cue{ animation:none; } }
+
+  @media (max-width:1024px){
+    .cat-grid{ grid-template-columns:1fr; }
+    .prod-grid{ grid-template-columns:repeat(2,1fr); }
+    .story .wrap{ grid-template-columns:1fr; gap:40px; }
+    .trust .wrap{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:repeat(2,1fr); }
+    nav.primary{ display:none; }
+    .menu-toggle{ display:flex; }
+  }
+  @media (max-width:640px){
+    .wrap{ padding:0 22px; }
+    .prod-grid{ grid-template-columns:1fr 1fr; gap:14px; }
+    .nav-row{ height:74px; }
+    .hero{ padding:64px 0 84px; }
+    .trust .wrap{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr; gap:34px; }
+    section{ padding:60px 0; }
+  }
+</style>
+</head>
+<body>
+<script src="products-data.js"></script>
+<script src="cart.js"></script>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo" aria-label="Zany'sCollection home">
+      <img src="images/zany-emblem-transparent.png" alt="" class="logo-mark">
+      <span class="logo-text">Zany's<span>Collection</span></span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        <li><a href="shop.html">Shop All</a></li>
+        <li><a href="shop.html?cat=jewelry">Jewelry</a></li>
+        <li><a href="shop.html?cat=suits">Suits</a></li>
+        <li><a href="shop.html?cat=bags">Bags</a></li>
+        <li><a href="#story">Our Story</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <div class="icons-row">
+      <button aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      <button aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4.5 5.6 4c2.1-.3 4 .7 5.4 2.6C12.4 4.7 14.3 3.7 16.4 4 20 4.5 21.6 8 22 11.7 19.5 16.4 12 21 12 21z"/></svg></button>
+      <a href="cart.html" class="cart-dot" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L4.7 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg></a>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="shop.html">Shop All</a></li>
+      <li><a href="shop.html?cat=jewelry">Jewelry</a></li>
+      <li><a href="shop.html?cat=suits">Suits</a></li>
+      <li><a href="shop.html?cat=bags">Bags</a></li>
+      <li><a href="#story">Our Story</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Eid &amp; Wedding Collection 2026</span>
+    <h1>Shine like <em>royalty</em>,<br>every single day</h1>
+    <p>Bold jewelry, festive Pakistani suits, and statement handbags — crafted for women who don't do subtle.</p>
+    <div class="hero-ctas">
+      <a href="#bestsellers" class="btn btn-gold">Shop Best Sellers</a>
+      <a href="#categories" class="btn btn-outline">Explore Collections</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll <span>↓</span></div>
+</section>
+
+<section id="categories">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Shop by Category</span>
+      <h2>Three crafts, one house</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card jewelry reveal">
+        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2L4 9l8 13 8-13-8-7z"/><path d="M4 9h16"/><path d="M9 9l3-7 3 7"/></svg>
+        <div class="cat-card-body">
+          <span class="eyebrow">01 Pieces</span>
+          <h3>Jewelry</h3>
+          <a href="shop.html?cat=jewelry">Discover the edit</a>
+        </div>
+      </div>
+      <div class="cat-card suits reveal">
+        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M6 8c0-3 2.5-5.5 6-5.5S18 5 18 8"/><rect x="4" y="8" width="16" height="13" rx="1.5"/></svg>
+        <div class="cat-card-body">
+          <span class="eyebrow">Ready to Wear</span>
+          <h3>Pakistani Suits</h3>
+          <a href="shop.html?cat=suits">Discover the edit</a>
+        </div>
+      </div>
+      <div class="cat-card bags reveal">
+        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M8 7V5a4 4 0 018 0v2"/><rect x="3" y="7" width="18" height="14" rx="2"/></svg>
+        <div class="cat-card-body">
+          <span class="eyebrow">Everyday Luxury</span>
+          <h3>Handbags</h3>
+          <a href="shop.html?cat=bags">Discover the edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bestsellers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Best Sellers</span>
+      <h2>Loved, worn, repeated</h2>
+      <p>The pieces our customers keep coming back for — chosen by what actually sells, not what we wish sold.</p>
+    </div>
+    <div class="prod-grid" id="prodGrid"></div>
+    <div class="grid-cta reveal"><a href="shop.html" class="btn btn-dark">View Full Shop</a></div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story-art reveal"></div>
+    <div class="story-copy reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2>Made in Pakistan, made for the world</h2>
+      <p>Zany'sCollection began with a simple frustration: beautiful Pakistani craftsmanship rarely reached women outside the country in a way that felt modern. So we started sourcing directly from goldsmiths in Lahore and embroidery ateliers in Karachi, and built the presentation around them.</p>
+      <p>Every piece is finished by hand. Every suit is inspected seam by seam. Nothing ships until it meets a standard we'd wear ourselves.</p>
+      <div class="story-stats">
+        <div><strong>12k+</strong><span>Women Dressed</span></div>
+        <div><strong>40+</strong><span>Artisan Partners</span></div>
+        <div><strong>4.9</strong><span>Average Rating</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 2l3 6 6 1-4.5 4.4 1 6.1L12 16.5l-5.5 3 1-6.1L3 9l6-1 3-6z"/></svg>
+      <div><h5>Certified Authentic</h5><p>Every jewelry piece ships with a signed authenticity card.</p></div>
+    </div>
+    <div class="trust-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="2" y="7" width="20" height="13" rx="1.5"/><path d="M2 11h20"/><path d="M7 15h4"/></svg>
+      <div><h5>Secure Checkout</h5><p>Encrypted payments, cards or cash on delivery.</p></div>
+    </div>
+    <div class="trust-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M3 12h13l-4-4m4 4l-4 4"/><path d="M16 5h5v14h-5"/></svg>
+      <div><h5>USA &amp; Canada Shipping</h5><p>Delivered across the USA in 5–8 days, Canada in 7–10 days.</p></div>
+    </div>
+    <div class="trust-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M4 4v6h6"/><path d="M4.5 15a8 8 0 1 0 2-9.4L4 10"/></svg>
+      <div><h5>Here to Help</h5><p>Have an issue with your order? Message us directly and we'll sort it out.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testi-section">
+  <div class="testi-orbs" aria-hidden="true">
+    <span class="orb orb-emerald"></span>
+    <span class="orb orb-magenta"></span>
+    <span class="orb orb-gold"></span>
+  </div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Reviews</span>
+      <h2>What our customers say</h2>
+    </div>
+    <div class="testi-grid" id="testiGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="logo-text">Zany's<span style="color:var(--gold);">Collection</span></span>
+        <p>Luxury jewelry, Pakistani suits, and handbags — designed for women who want heritage without slowing down.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M15 4h-2a4 4 0 00-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M14 3v10.5a3.5 3.5 0 11-3-3.46"/><path d="M14 3c.5 2.5 2 4 5 4.2"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h6>Shop</h6>
+        <ul><li><a href="shop.html?cat=jewelry">Jewelry</a></li><li><a href="shop.html?cat=suits">Suits</a></li><li><a href="shop.html?cat=bags">Bags</a></li><li><a href="shop.html">New Arrivals</a></li><li><a href="shop.html">Sale</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h6>Help</h6>
+        <ul><li><a href="contact.html">Contact Us</a></li><li><a href="shipping-policy.html">Shipping Policy</a></li><li><a href="refund-policy.html">Refund Policy</a></li><li><a href="faqs.html">FAQs</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h6>Company</h6>
+        <ul><li><a href="about.html">About Us</a></li><li><a href="#story">Our Story</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li></ul>
+      </div>
+      </div>
+    <div class="foot-bottom">
+      <span>© 2026 Zany'sCollection. All rights reserved.</span>
+      <span>Designed &amp; crafted in Pakistan</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5.1-1.3A10 10 0 1012 2zm5.8 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-3.4-.9-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+</a>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 12); });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  if(menuToggle && mobileNav){
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const starSVG = `<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6L22 9.6l-5 5 1.3 7.1L12 18l-6.3 3.7L7 14.6l-5-5 7.1-1z"/></svg>`;
+
+  function fmt(n){ return '$' + n.toLocaleString('en-US'); }
+  const products = catalog.filter(p => p.img || p.images).slice(0, 8);
+  const catLabelsHome = { jewelry:'Jewelry', suits:'Suits', bags:'Bags' };
+  const icons = {
+    jewelry:`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2L4 9l8 13 8-13-8-7z"/><path d="M4 9h16"/></svg>`,
+    suits:`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M6 8c0-3 2.5-5.5 6-5.5S18 5 18 8"/><rect x="4" y="8" width="16" height="13" rx="1.5"/></svg>`,
+    bags:`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M8 7V5a4 4 0 018 0v2"/><rect x="3" y="7" width="18" height="14" rx="2"/></svg>`
+  };
+  const prodGrid = document.getElementById('prodGrid');
+  products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'prod-card reveal';
+    card.innerHTML = `
+      <div class="prod-media ${p.cat}">
+        <a href="product.html?id=${p.id}" class="media-link" aria-label="View ${p.name}">
+          ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : icons[p.cat]}
+        </a>
+        ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+        <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4.5 5.6 4c2.1-.3 4 .7 5.4 2.6C12.4 4.7 14.3 3.7 16.4 4 20 4.5 21.6 8 22 11.7 19.5 16.4 12 21 12 21z"/></svg></button>
+        <button class="quick-add">Add to Cart</button>
+      </div>
+      <div class="prod-info">
+        <span class="eyebrow">${catLabelsHome[p.cat]}</span>
+        <h4><a href="product.html?id=${p.id}">${p.name}</a></h4>
+        <div class="stars">${starSVG.repeat(5)}</div>
+        <div class="price-row"><span class="price">${fmt(p.price)}</span>${p.was ? `<span class="price-was">${fmt(p.was)}</span>`:''}</div>
+      </div>`;
+    const addBtn = card.querySelector('.quick-add');
+    addBtn.onclick = () => {
+      if(p.sizes){
+        window.location.href = `product.html?id=${p.id}`;
+        return;
+      }
+      addToCart(p.id, 1, null);
+      const original = addBtn.textContent;
+      addBtn.textContent = 'Added ✓';
+      setTimeout(() => { addBtn.textContent = original; }, 1400);
+    };
+    prodGrid.appendChild(card);
+    io.observe(card);
+  });
+
+  const testis = [
+    { name:'Kinz', loc:'Verified Buyer', text:'Thank you so much for my outfit!! It fits perfectly and was delivered in less than 2 days! The quality is amazing!! Can\'t wait to order again!!' },
+  ];
+  const testiGrid = document.getElementById('testiGrid');
+  testis.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'testi-card reveal';
+    card.innerHTML = `
+      <div class="stars">${starSVG.repeat(5)}</div>
+      <p>&ldquo;${t.text}&rdquo;</p>
+      <div class="testi-who">
+        <div class="avatar"></div>
+        <div><strong>${t.name}</strong><span>${t.loc}</span></div>
+      </div>`;
+    testiGrid.appendChild(card);
+    io.observe(card);
+
+    // 3D tilt on mouse move — subtle, resets smoothly on leave
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `translateY(-10px) rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg)`;
+      card.style.animationPlayState = 'paused';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.animationPlayState = 'running';
+    });
+  });
+</script>
+</body>
+</html>
